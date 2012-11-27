@@ -27,7 +27,7 @@ module AP
           return
         end
         endpoint = options[:endpoint]
-        debugger
+        
         # Check if endpoint is to WSDL
         if endpoint.downcase.end_with?("wsdl")
           # Uses soap client

@@ -4,15 +4,15 @@ bin/**
 .bundle
 vendor/bundle
 log/*
-spec/dummy/log/*
-spec/dummy/db/migrate/*
+test/dummy/log/*
+test/dummy/db/migrate/*
 tmp/*
 db/*.sqlite3
 public/system/*
 coverage/
 config/heroku.yml
 config/local-env.yml
-spec/dummy/config/local-env.yml
+test/dummy/config/local-env.yml
 .DS_Store
 *.tmproj
 tmtags
@@ -31,7 +31,7 @@ test/version_tmp
 tmp
 pkg
 lib/bundler/man
-spec/reports
+test/reports
 .config
 InstalledFiles
 certificates/*
