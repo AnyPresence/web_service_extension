@@ -30,8 +30,9 @@ module AP
         
         # Check if endpoint is to WSDL
         if endpoint.downcase.end_with?("wsdl")
-          # Uses soap client
+          # Use soap client
           client = soap_client(endpoint) 
+          client.request.basic_auth(options[:username], options[:password]) if (!options[:username].blank? && !options[:password].blank?)
           
           return if options[:action].blank?
           
@@ -50,10 +51,7 @@ module AP
       end
       
 protected
-      def basic_auth_encode_cred(username, password)
-        "Basic " + Base64::encode64("#{username}:#{password}")
-      end
-      
+
       def soap_client(endpoint)
         Savon.client(endpoint)
       end
