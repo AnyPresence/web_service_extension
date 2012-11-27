@@ -1,0 +1,1 @@
+AP::WebServiceExtension::WebService::config_account({:endpoint => "http://localhost/TestWs/"})
