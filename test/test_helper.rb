@@ -6,6 +6,8 @@ require "rails/test_help"
 require 'database_cleaner'
 require 'factory_girl'
 require 'shoulda'
+require 'webmock/test_unit'
+require 'vcr'
 
 Rails.backtrace_cleaner.remove_silencers!
 
@@ -27,6 +29,13 @@ DatabaseCleaner.strategy = :truncation
 #class ActiveSupport::TestCase
 #  fixtures :all
 #end
+
+VCR.config do |c|
+  c.stub_with :webmock
+  c.cassette_library_dir = 'test/fixtures/vcr_cassettes'
+  c.allow_http_connections_when_no_cassette = true
+  c.default_cassette_options = { :record => :new_episodes }
+end
 
 class Test::Unit::TestCase
   def setup

@@ -1,0 +1,150 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://192.168.1.3:8080/Meep/Meep?WSDL
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - grizzly/1.9.36
+      Content-Type:
+      - text/xml;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 27 Nov 2012 18:54:38 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version=''1.0'' encoding=''UTF-8''?><!-- Published by JAX-WS
+        RI at http://jax-ws.dev.java.net. RI''s version is Metro/2.1.1-b09 (branches/2.1-6834;
+        2011-07-16T17:14:48+0000) JAXWS-RI/2.2.5-promoted-b04 JAXWS/2.2. --><!-- Generated
+        by JAX-WS RI at http://jax-ws.dev.java.net. RI''s version is Metro/2.1.1-b09
+        (branches/2.1-6834; 2011-07-16T17:14:48+0000) JAXWS-RI/2.2.5-promoted-b04
+        JAXWS/2.2. --><definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+        xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy"
+        xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:tns="http://testws.laidbacklife.net/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://testws.laidbacklife.net/"
+        name="Meep">
+
+        <types>
+
+        <xsd:schema>
+
+        <xsd:import namespace="http://testws.laidbacklife.net/" schemaLocation="http://192.168.1.3:8080/Meep/Meep?xsd=1"/>
+
+        </xsd:schema>
+
+        </types>
+
+        <message name="hello">
+
+        <part name="parameters" element="tns:hello"/>
+
+        </message>
+
+        <message name="helloResponse">
+
+        <part name="parameters" element="tns:helloResponse"/>
+
+        </message>
+
+        <message name="Cry">
+
+        <part name="parameters" element="tns:Cry"/>
+
+        </message>
+
+        <message name="CryResponse">
+
+        <part name="parameters" element="tns:CryResponse"/>
+
+        </message>
+
+        <portType name="Meep">
+
+        <operation name="hello">
+
+        <input wsam:Action="http://testws.laidbacklife.net/Meep/helloRequest" message="tns:hello"/>
+
+        <output wsam:Action="http://testws.laidbacklife.net/Meep/helloResponse" message="tns:helloResponse"/>
+
+        </operation>
+
+        <operation name="Cry">
+
+        <input wsam:Action="http://testws.laidbacklife.net/Meep/CryRequest" message="tns:Cry"/>
+
+        <output wsam:Action="http://testws.laidbacklife.net/Meep/CryResponse" message="tns:CryResponse"/>
+
+        </operation>
+
+        </portType>
+
+        <binding name="MeepPortBinding" type="tns:Meep">
+
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+
+        <operation name="hello">
+
+        <soap:operation soapAction=""/>
+
+        <input>
+
+        <soap:body use="literal"/>
+
+        </input>
+
+        <output>
+
+        <soap:body use="literal"/>
+
+        </output>
+
+        </operation>
+
+        <operation name="Cry">
+
+        <soap:operation soapAction=""/>
+
+        <input>
+
+        <soap:body use="literal"/>
+
+        </input>
+
+        <output>
+
+        <soap:body use="literal"/>
+
+        </output>
+
+        </operation>
+
+        </binding>
+
+        <service name="Meep">
+
+        <port name="MeepPort" binding="tns:MeepPortBinding">
+
+        <soap:address location="http://192.168.1.3:8080/Meep/Meep"/>
+
+        </port>
+
+        </service>
+
+        </definitions>'
+    http_version: 
+  recorded_at: Tue, 27 Nov 2012 18:54:30 GMT
+recorded_with: VCR 2.2.5

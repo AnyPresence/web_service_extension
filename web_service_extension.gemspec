@@ -19,11 +19,12 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 3.2.8"
   s.add_dependency "mongoid", "~> 3.0.6"
   s.add_dependency "savon"
-  # s.add_dependency "jquery-rails"
+  s.add_dependency "faraday"
 
-  #s.add_development_dependency "sqlite3"
   s.add_development_dependency "shoulda"
   s.add_development_dependency "database_cleaner"
   s.add_development_dependency "factory_girl", "= 3.3.0"
   s.add_development_dependency "debugger"
+  s.add_development_dependency "webmock"
+  s.add_development_dependency "vcr"
 end

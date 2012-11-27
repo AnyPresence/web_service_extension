@@ -15,19 +15,25 @@ class OutagesControllerTest < ActionController::TestCase
   def valid_session
     {}
   end
+  
+  setup do
+    VCR.use_cassette('test_wsdl_response') do
+      @outage = Outage.create! valid_attributes
+    end
+  end
 
-  test "should get index" do
+  should "index" do
     get :index
     assert_response :success
     assert_not_nil assigns(:outages)
   end
 
-  test "should get new" do
+  should "get new" do
     get :new
     assert_response :success
   end
 
-  test "should create outage" do
+  should "create outage" do
     assert_difference('Outage.count') do
       post :create, outage: {  }
     end
@@ -35,30 +41,24 @@ class OutagesControllerTest < ActionController::TestCase
     assert_redirected_to outage_path(assigns(:outage))
   end
 
-  test "should show outage" do
-    outage = Outage.create! valid_attributes
-    
-    get :show, id: outage
+  should "show outage" do
+    get :show, id: @outage
     assert_response :success
   end
 
-  test "should get edit" do
-    outage = Outage.create! valid_attributes
-    
-    get :edit, id: outage
+  should "get edit" do
+    get :edit, id: @outage
     assert_response :success
   end
 
-  test "should update outage" do
-    outage = Outage.create! valid_attributes
-    put :update, id: outage, outage: {  }
+  should "update outage" do
+    put :update, id: @outage, outage: {  }
     assert_redirected_to outage_path(assigns(:outage))
   end
 
-  test "should destroy outage" do
-    outage = Outage.create! valid_attributes
+  should "destroy outage" do
     assert_difference('Outage.count', -1) do
-      delete :destroy, id: outage
+      delete :destroy, id: @outage
     end
 
     assert_redirected_to outages_path
