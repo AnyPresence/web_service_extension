@@ -7,11 +7,11 @@ require "web_service_extension/version"
 Gem::Specification.new do |s|
   s.name        = "web_service_extension"
   s.version     = WebServiceExtension::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of WebServiceExtension."
-  s.description = "TODO: Description of WebServiceExtension."
+  s.authors     = ["Anypresence"]
+  s.email       = ["info@anypresence.com"]
+  s.homepage    = "http://www.anypresence.com/"
+  s.summary     = ""
+  s.description = "WebServiceExtension"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
