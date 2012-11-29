@@ -29,14 +29,13 @@ module AP
           Rails.logger.error ":endpoint must not be blank"
           return
         end
-        endpoint = options[:endpoint]
         
         basic_auth_hash = @@config[:basic_auth_hash]
         
         # Check if endpoint is to WSDL
         if endpoint.downcase.end_with?("wsdl")
           # Use soap client
-          client = soap_client(endpoint) 
+          client = Savon.client(endpoint)
 
           client.http.headers["Authorization"] = basic_auth_hash unless basic_auth_hash.blank?
 
@@ -51,44 +50,12 @@ module AP
           
           return response.body
         else
-          setup_connection
+          httpUtility = ::AP::WebServiceExtension::HttpUtility.new(endpoint)
+          httpUtility.setup_connection
           # Check if basic auth is required
-          @http_connection.headers[:authorization] = basic_auth_hash unless basic_auth_hash.blank?
-          response = post(endpoint, object_instance.attributes)
+          httpUtility.http_connection.headers[:authorization] = basic_auth_hash unless basic_auth_hash.blank?
+          response = httpUtility.post(endpoint, object_instance.attributes)
           return response
-        end
-      end
-      
-protected
-
-      def soap_client(endpoint)
-        Savon.client(endpoint)
-      end
-      
-      def post(uri, params=nil)
-        @http_connection.post(uri, params)
-      end
-      
-      def setup_connection
-        connection({:user_agent => "Anypresence Extension"})
-      end
-      
-      # Connect to API.
-      def connection(options={})
-        default_options = {
-          :headers => {
-            :accept => 'application/json',
-            :user_agent => options[:user_agent],
-          },
-          :proxy => options[:proxy],
-          :ssl => {:verify => false},
-          :url => options.fetch(:endpoint, options[:endpoint]),
-        }
-        @http_connection ||= Faraday.new(default_options) do |builder|
-          builder.use Faraday::Request::UrlEncoded  # convert request params as "www-form-urlencoded"
-          builder.use Faraday::Response::Logger     # log the request to STDOUT
-          builder.use Faraday::Adapter::NetHttp     # make http requests with Net::HTTP
-          builder.adapter(:net_http)
         end
       end
       

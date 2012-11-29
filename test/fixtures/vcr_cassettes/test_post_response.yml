@@ -1,0 +1,101 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:3001/secrets
+    body:
+      encoding: US-ASCII
+      string: _id=50b784d4772c966ca4000002&updated_at=2012-11-29+15%3A52%3A52+UTC&created_at=2012-11-29+15%3A52%3A52+UTC
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - Anypresence Extension
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 401
+      message: ! 'Unauthorized '
+    headers:
+      Www-Authenticate:
+      - Basic realm="Application"
+      Content-Type:
+      - text/html; charset=utf-8
+      X-Ua-Compatible:
+      - IE=Edge
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - b257c75be67892dd7259f9777ef45430
+      X-Runtime:
+      - '0.123177'
+      Content-Length:
+      - '27'
+      Server:
+      - WEBrick/1.3.1 (Ruby/1.9.3/2012-10-12)
+      Date:
+      - Thu, 29 Nov 2012 15:52:53 GMT
+      Connection:
+      - Keep-Alive
+      Set-Cookie:
+      - _test_basic_auth_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJTU0ZWI2YmZjNDVjOWM3ODg2ZWM4NmQ2YTM1NDIyYjVlBjsAVA%3D%3D--67c63780492f3bede3a486b0ae19594f596481e1;
+        path=/; HttpOnly
+    body:
+      encoding: US-ASCII
+      string: ! 'HTTP Basic: Access denied.
+
+'
+    http_version: 
+  recorded_at: Thu, 29 Nov 2012 15:52:53 GMT
+- request:
+    method: post
+    uri: http://localhost:3001/secrets
+    body:
+      encoding: US-ASCII
+      string: ! 'HTTP Basic: Access denied.
+
+'
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - Anypresence Extension
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 401
+      message: ! 'Unauthorized '
+    headers:
+      Www-Authenticate:
+      - Basic realm="Application"
+      Content-Type:
+      - text/html; charset=utf-8
+      X-Ua-Compatible:
+      - IE=Edge
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 55607326b4639934764d74b1aef5a4ab
+      X-Runtime:
+      - '0.003994'
+      Content-Length:
+      - '27'
+      Server:
+      - WEBrick/1.3.1 (Ruby/1.9.3/2012-10-12)
+      Date:
+      - Thu, 29 Nov 2012 15:52:53 GMT
+      Connection:
+      - Keep-Alive
+      Set-Cookie:
+      - _test_basic_auth_session=BAh7BkkiD3Nlc3Npb25faWQGOgZFRkkiJWE2YmRhZGE0OTFiZDQ4Y2FmOGI0MmQyZDgzN2Q1M2I5BjsAVA%3D%3D--7d5dd60dce65d3410c61dc2051b891b28c4466fb;
+        path=/; HttpOnly
+    body:
+      encoding: US-ASCII
+      string: ! 'HTTP Basic: Access denied.
+
+'
+    http_version: 
+  recorded_at: Thu, 29 Nov 2012 15:52:53 GMT
+recorded_with: VCR 2.2.5
