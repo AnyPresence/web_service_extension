@@ -73,7 +73,10 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    metaclass (0.0.1)
     mime-types (1.19)
+    mocha (0.12.7)
+      metaclass (~> 0.0.1)
     mongoid (3.0.9)
       activemodel (~> 3.1)
       moped (~> 1.1)
@@ -119,12 +122,11 @@ GEM
       nokogiri (>= 1.4.0)
       nori (~> 1.1.0)
       wasabi (~> 2.5.0)
-    shoulda (3.3.2)
-      shoulda-context (~> 1.0.1)
-      shoulda-matchers (~> 1.4.1)
+    shoulda (3.0.1)
+      shoulda-context (~> 1.0.0)
+      shoulda-matchers (~> 1.0.0)
     shoulda-context (1.0.1)
-    shoulda-matchers (1.4.1)
-      activesupport (>= 3.0.0)
+    shoulda-matchers (1.0.0)
     sprockets (2.2.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -153,9 +155,10 @@ DEPENDENCIES
   factory_girl (= 3.3.0)
   faraday
   jquery-rails
+  mocha (~> 0.12.3)
   mongoid (~> 3.0.6)
   savon
-  shoulda
+  shoulda (~> 3.0.1)
   vcr
   web_service_extension!
   webmock

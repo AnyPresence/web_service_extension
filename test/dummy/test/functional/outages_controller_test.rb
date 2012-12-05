@@ -17,9 +17,8 @@ class OutagesControllerTest < ActionController::TestCase
   end
   
   setup do
-    VCR.use_cassette('test_wsdl_response') do
-      @outage = Outage.create! valid_attributes
-    end
+    Outage.any_instance.stubs(:web_service_perform)
+    @outage = Outage.create! valid_attributes
   end
 
   should "index" do
