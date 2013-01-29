@@ -23,6 +23,11 @@ module AP
       #  +object_instance+ is the object instance
       #  +options+ is a hash that includes: +endpoint+ the endpoint to connect to, +action+ soap action
       def web_service_perform(object_instance, options={})
+        if @@config[:disabled]
+          Rails.logger.info "Extension has been disabled."
+          return
+        end
+        
         options = HashWithIndifferentAccess.new(options)
         endpoint = @@config[:endpoint]
         if endpoint.blank?
