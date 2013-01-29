@@ -1,0 +1,39 @@
+{
+  "type": "ServiceInstance::RailsEngineGem",
+  "name": "Web Service Notifier",
+  "filename": "web_service_extension",
+  "version": "0.0.2",
+  "mount_name": "WebServiceExtension::Engine",
+  "mount_endpoint": "/web_service_extension",
+  "model_configuration": {
+    "included_module": "AP::WebServiceExtension::WebService",
+    "fire_method": "web_service_perform",
+    "parameters": ["required_configuration"],
+    "authentication": {
+      "type": "basic",
+      "name": "basic_auth_hash",
+      "username_field_name": "username",
+      "password_field_name": "password"
+    },
+    "required_configuration": {
+      "endpoint": {
+        "type": "String",
+        "description": "The URI endpoint. If it's a WSDL endpoint, then an 'action' should be provided."
+      },
+      "username": {
+        "type": "String",
+        "description": "Username for basic authentication."
+      },
+      "password": {
+        "type": "String",
+        "description": "Password for basic authentication."
+      }
+    },
+    "object_definition_level_configuration": {
+      "action": {
+        "type": "String",
+        "description": "Soap action"
+      }
+    }
+  }
+}

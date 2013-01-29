@@ -19,6 +19,10 @@ module AP
         @@config.merge!(config)
       end
       
+      def self.json_config
+        @@json ||= ActiveSupport::JSON.decode(File.read("#{File.dirname(__FILE__)}/../../../manifest.json"))
+      end
+      
       # Builds request for webservice.
       #  +object_instance+ is the object instance
       #  +options+ is a hash that includes: +endpoint+ the endpoint to connect to, +action+ soap action
