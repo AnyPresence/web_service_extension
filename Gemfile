@@ -6,16 +6,18 @@ source "http://rubygems.org"
 gemspec
 
 # jquery-rails is used by the dummy application
-gem "jquery-rails"
+gem 'rspec-rails'
 gem 'mongoid', '~> 3.0.6'
-gem 'savon'
-gem "faraday", '~> 0.8.4'
+gem 'actionpack'
 gem 'haml', '3.1.7'
 gem 'coffee-rails', '~> 3.2.1'
 gem 'jquery_mobile_rails', '1.2.0'
 gem 'simple_form', '2.0.4'
 gem 'sass-rails', '3.2.5'
 gem 'compass-rails', '1.0.3'
+
+gem 'savon'
+gem "faraday", '~> 0.8.4'
 
 group :assets do
   gem 'therubyracer'
