@@ -34,6 +34,10 @@ module AP
           builder.adapter(:net_http)
         end
       end
+    
+      def self.basic_auth_hash(username, password)
+        "Basic " + Base64::encode64("#{username}:#{password}")
+      end
     end
   end
 end

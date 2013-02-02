@@ -11,10 +11,10 @@ module AP
       # Creates the account.
       # +config+ configuration properties should contain
       def self.config_account(config={})
-        if config.empty?
-          raise "Nothing to configure!"
-        end
         config = HashWithIndifferentAccess.new(config)
+        
+        config[:username] = ENV['AP_WEB_SERVICE_NOTIFIER_USERNAME']
+        config[:password] = ENV['AP_WEB_SERVICE_NOTIFIER_PASSWORD']
         
         @@config.merge!(config)
       end
@@ -23,7 +23,7 @@ module AP
         @@json ||= ActiveSupport::JSON.decode(File.read("#{File.dirname(__FILE__)}/../../../manifest.json"))
       end
       
-      # Builds request for webservice.
+      # Builds request for websheervice.
       #  +object_instance+ is the object instance
       #  +options+ is a hash that includes: +endpoint+ the endpoint to connect to, +action+ soap action
       def web_service_perform(object_instance, options={})
@@ -39,7 +39,7 @@ module AP
           return
         end
         
-        basic_auth_hash = @@config[:basic_auth_hash]
+        basic_auth_hash = ::AP::WebServiceExtension::HttpUtility.basic_auth_hash(@@config[:username], @@config[:password])
         
         # Check if endpoint is to WSDL
         if endpoint.downcase.end_with?("wsdl")
