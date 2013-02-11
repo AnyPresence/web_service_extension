@@ -1,5 +1,6 @@
-module WebServiceExtension
-  class ApplicationController < ActionController::Base
-    before_filter :authenticate_admin!
-  end
+class WebServiceExtension::ApplicationController < ApplicationController
+  layout 'layouts/admin'
+  
+  before_filter :authenticate_admin!
 end
+
