@@ -1,3 +1,12 @@
-.text-info
-  %h3 Web Service Extension Settings
-  %h3 No configuration options available
+%ul.breadcrumb
+  %li
+    = link_to 'Home', main_app.admin_root_path
+    %span.divider /
+  %li
+    = link_to 'Extensions', main_app.admin_extensions_path
+    %span.divider /
+  %li.active Web Service
+
+.alert.alert-info
+  %h1 Web Service
+  %p The web service extension has no settings.
