@@ -7,7 +7,7 @@ gemspec
 
 # jquery-rails is used by the dummy application
 gem 'rspec-rails'
-gem 'mongoid', '~> 3.0.6'
+gem 'mongoid', '~> 3.1'
 gem 'actionpack'
 gem 'haml', '3.1.7'
 gem 'coffee-rails', '~> 3.2.1'
@@ -18,6 +18,7 @@ gem 'compass-rails', '1.0.3'
 
 gem 'savon'
 gem "faraday", '~> 0.8.4'
+gem 'minitest', '~> 3.5.0'
 
 group :assets do
   gem 'therubyracer'
@@ -31,4 +32,4 @@ end
 # your gem to rubygems.org.
 
 # To use debugger
-gem 'debugger'
+gem 'debugger', '~> 1.5.0'

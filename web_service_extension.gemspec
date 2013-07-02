@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.2.8"
-  s.add_dependency "mongoid", "~> 3.0.6"
+  s.add_dependency "mongoid", '~> 3.1'
   s.add_dependency "savon"
   s.add_dependency "faraday", '~> 0.8.4'
 
@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "database_cleaner"
   s.add_development_dependency "factory_girl", "= 3.3.0"
   s.add_development_dependency "mocha", "~> 0.12.3"
-  s.add_development_dependency "debugger"
+  s.add_development_dependency "debugger", "~> 1.5.0"
   s.add_development_dependency "webmock"
   s.add_development_dependency "vcr"
 end
