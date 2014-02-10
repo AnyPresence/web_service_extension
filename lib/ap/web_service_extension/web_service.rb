@@ -5,24 +5,25 @@ module AP
   module WebServiceExtension
     module WebService
       include ::WebServiceExtension::Common
-      
+
       @@config = HashWithIndifferentAccess.new
-      
+
       # Creates the account.
       # +config+ configuration properties should contain
       def self.config_account(config={})
         config = HashWithIndifferentAccess.new(config)
-        
+
         config[:username] = ENV['AP_WEB_SERVICE_NOTIFIER_USERNAME']
         config[:password] = ENV['AP_WEB_SERVICE_NOTIFIER_PASSWORD']
-        
+        config[:endpoint] = ENV['AP_WEB_SERVICE_NOTIFIER_ENDPOINT']
+
         @@config.merge!(config)
       end
-      
+
       def self.json_config
         @@json ||= ActiveSupport::JSON.decode(File.read("#{File.dirname(__FILE__)}/../../../manifest.json"))
       end
-      
+
       # Builds request for websheervice.
       #  +object_instance+ is the object instance
       #  +options+ is a hash that includes: +endpoint+ the endpoint to connect to, +action+ soap action
@@ -31,16 +32,16 @@ module AP
           Rails.logger.info "Extension has been disabled."
           return
         end
-        
+
         options = HashWithIndifferentAccess.new(options)
         endpoint = @@config[:endpoint]
         if endpoint.blank?
           Rails.logger.error ":endpoint must not be blank"
           return
         end
-        
+
         basic_auth_hash = ::AP::WebServiceExtension::HttpUtility.basic_auth_hash(@@config[:username], @@config[:password])
-        
+
         # Check if endpoint is to WSDL
         if endpoint.downcase.end_with?("wsdl")
           # Use soap client
@@ -52,11 +53,11 @@ module AP
             Rails.logger.error ":action must not be blank."
             return
           end
-          
+
           response = client.request(options[:action].to_sym) do
             soap.body = object_instance.attributes
           end
-          
+
           return response.body
         else
           httpUtility = ::AP::WebServiceExtension::HttpUtility.new(endpoint)
@@ -67,7 +68,7 @@ module AP
           return response
         end
       end
-      
+
     end
   end
 end
