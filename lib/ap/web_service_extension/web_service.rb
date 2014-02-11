@@ -24,7 +24,7 @@ module AP
         @@json ||= ActiveSupport::JSON.decode(File.read("#{File.dirname(__FILE__)}/../../../manifest.json"))
       end
 
-      # Builds request for websheervice.
+      # Builds request for web service.
       #  +object_instance+ is the object instance
       #  +options+ is a hash that includes: +endpoint+ the endpoint to connect to, +action+ soap action
       def web_service_perform(object_instance, options={})

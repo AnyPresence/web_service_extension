@@ -32,4 +32,4 @@ end
 # your gem to rubygems.org.
 
 # To use debugger
-gem 'debugger', '~> 1.5.0'
+gem 'debugger', '~> 1.6.5'
