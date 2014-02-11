@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    web_service_extension (0.0.7)
+    web_service_extension (0.0.8)
       faraday (~> 0.8.4)
       mongoid (~> 3.1)
       rails (~> 3.2.8)
